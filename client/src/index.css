@@ -1,0 +1,269 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  :root {
+    /* Light theme variables (default) */
+    --bg-primary: #f8fafc;
+    --bg-secondary: rgba(255, 255, 255, 0.8);
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(59, 130, 246, 0.1);
+    --accent-primary: #6366f1;
+    --accent-secondary: #8b5cf6;
+    --gradient-start: #667eea;
+    --gradient-end: #764ba2;
+  }
+
+  /* Dark theme variables */
+  .dark {
+    --bg-primary: #0f172a;
+    --bg-secondary: rgba(15, 23, 42, 0.8);
+    --bg-card: rgba(30, 41, 59, 0.8);
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    --border-color: #334155;
+    --shadow-color: rgba(99, 102, 241, 0.1);
+    --accent-primary: #818cf8;
+    --accent-secondary: #a78bfa;
+    --gradient-start: #667eea;
+    --gradient-end: #764ba2;
+  }
+
+  /* Alternative data-theme approach (for compatibility) */
+  [data-theme="light"] {
+    --bg-primary: #f8fafc;
+    --bg-secondary: rgba(255, 255, 255, 0.8);
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --shadow-color: rgba(59, 130, 246, 0.1);
+    --accent-primary: #6366f1;
+    --accent-secondary: #8b5cf6;
+    --gradient-start: #667eea;
+    --gradient-end: #764ba2;
+  }
+
+  [data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: rgba(15, 23, 42, 0.8);
+    --bg-card: rgba(30, 41, 59, 0.8);
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e1;
+    --text-muted: #64748b;
+    --border-color: #334155;
+    --shadow-color: rgba(99, 102, 241, 0.1);
+    --accent-primary: #818cf8;
+    --accent-secondary: #a78bfa;
+    --gradient-start: #667eea;
+    --gradient-end: #764ba2;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium text-white transition duration-300 ease-in-out;
+    background-color: var(--accent-primary);
+  }
+  .btn:hover {
+    background-color: var(--accent-secondary);
+  }
+
+  .card {
+    @apply rounded-xl p-4 shadow-lg transition-all duration-300;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+  .card:hover {
+    @apply shadow-xl;
+  }
+
+  .theme-bg {
+    background-color: var(--bg-primary);
+  }
+
+  .theme-bg-secondary {
+    background-color: var(--bg-secondary);
+  }
+
+  .theme-bg-card {
+    background-color: var(--bg-card);
+  }
+
+  .theme-text {
+    color: var(--text-primary);
+  }
+
+  .theme-text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .theme-text-muted {
+    color: var(--text-muted);
+  }
+
+  .theme-border {
+    border-color: var(--border-color);
+  }
+
+  .theme-shadow {
+    box-shadow: 0 10px 15px -3px var(--shadow-color),
+      0 4px 6px -2px var(--shadow-color);
+  }
+
+  .profile-card {
+    @apply backdrop-blur-md rounded-xl shadow-lg p-6 max-w-4xl mx-auto text-center;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+  }
+
+  .stat-card {
+    @apply card flex items-center justify-between;
+  }
+
+  /* FIXED: Dropdown styling for better visibility */
+  select {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+
+  select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  }
+
+  select option {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    padding: 8px 12px;
+  }
+
+  /* Ensure dropdown options are visible in both themes */
+  .dark select option {
+    background-color: #1e293b;
+    color: #f1f5f9;
+  }
+
+  select option:hover,
+  select option:focus {
+    background-color: var(--accent-primary);
+    color: white;
+  }
+
+  /* Input styling for consistency */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"],
+  input[type="email"],
+  input[type="password"],
+  textarea {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="date"]:focus,
+  input[type="email"]:focus,
+  input[type="password"]:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+  }
+
+  /* Placeholder text styling */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "system-ui", "sans-serif";
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", "system-ui", "sans-serif";
+  color: var(--text-primary);
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+@keyframes gradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Grid pattern for backgrounds */
+.bg-grid-pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 0
+  );
+  background-size: 20px 20px;
+}
+
+.dark .bg-grid-pattern {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(255, 255, 255, 0.1) 1px,
+    transparent 0
+  );
+}
+
+/* Utility classes for theme-aware styling */
+.theme-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+}
+
+.theme-gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--accent-primary),
+    var(--accent-secondary)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
