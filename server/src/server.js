@@ -15,8 +15,14 @@ const app = express();
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: [
+      "https://finance-tracker-gamma-eight.vercel.app",
+      "https://finance-tracker-336e6azu6-renukas-projects-64d87f3a.vercel.app",
+      "http://localhost:5173", // for local development
+    ],
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(express.json({ limit: "10mb" }));
