@@ -5,7 +5,8 @@ import {
   useEffect,
   useCallback,
 } from "react";
-import { isTokenExpired, getCurrentUser } from "../services/api"; // Changed from auth.js to api.js
+import { useNavigate } from "react-router-dom";
+import { isTokenExpired, getCurrentUser } from "../services/api";
 
 const AuthContext = createContext();
 
@@ -22,6 +23,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const initializeAuth = useCallback(async () => {
     try {
@@ -95,8 +97,9 @@ export const AuthProvider = ({ children }) => {
   const logout = useCallback(() => {
     console.log("User logged out");
     clearAuth();
-    window.location.href = "/login";
-  }, [clearAuth]);
+    // Use React Router navigation instead of window.location.href
+    navigate("/login", { replace: true });
+  }, [clearAuth, navigate]);
 
   const updateUser = useCallback((userData) => {
     setUser(userData);
