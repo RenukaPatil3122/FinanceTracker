@@ -13,6 +13,7 @@ _Deploying soon..._
 - 📈 **Analytics Dashboard** – Visual insights with pie, bar, and line charts
 - 📅 **Time Filters** – Track by week, month, quarter, or year
 - 📂 **Category Breakdown** – Expense categorization for better clarity
+- 📤 **Export data as PDF/CSV** 
 
 ## 🖥️ Tech Stack
 
